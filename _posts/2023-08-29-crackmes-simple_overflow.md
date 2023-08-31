@@ -34,9 +34,9 @@ He utilizado **Cutter** para decompilar esta función.
 Como se puede ver, utiliza la función **malloc()** para guardar en el heap dos variables.
 
 - uVar1: Será donde fgets() guardará la entrada del usuario.
-- uVar2: Es la variable que debemos sobreescribir.
+- piVar2: Es la variable que debemos sobreescribir.
 
-Vemos que despues de guardar la entrada del usuario, comprueba si la variable **uVar2** es igual a 0. En caso de serlo, habremos conseguido iniciar sesión como admin.
+Vemos que despues de guardar la entrada del usuario, comprueba si la variable **piVar2** es igual a 0. En caso de serlo, habremos conseguido iniciar sesión como admin.
 
 ## Explotación
 
@@ -52,13 +52,13 @@ A continuación, ejecuto el programa y le paso una entrada cualquiera.
 
 ![img](/imgs/write-ups/crackmes/simple-overflow/simple_overflow_5.png)
 
-Como se puede ver en la imágen anterior, hay una distancia de 32 bytes entre el valor iniciar de **uVar2** (01) y la entrada del usuario.
+Como se puede ver en la imágen anterior, hay una distancia de 32 bytes entre el valor iniciar de **piVar2** (01) y la entrada del usuario.
 
 ### fgets()
 
 La función que se utiliza para leer la entrada del usuario es **fgets()**, la cual leerá hasta que encuentre un salto de linea (\x0A). Por lo que será necesario mandarlo al final del exploit.
 
-### uVar2
+### piVar2
 
 Esta variable es de tipo **int32_t** por lo que al menos necesitaremos 4 bytes contiguos de 0 (\x00).
 
@@ -73,7 +73,7 @@ elf = ELF("./simple_overflow")
 p = process(elf.path)
 
 payload  =  b"0" * 32       # Padding
-payload +=  b"\x00" * 4     # Override uVar2
+payload +=  b"\x00" * 4     # Override piVar2
 payload +=  b"\x0a"         # EOL
 
 p.send(payload)
