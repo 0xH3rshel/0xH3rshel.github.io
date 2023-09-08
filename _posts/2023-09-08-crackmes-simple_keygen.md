@@ -39,6 +39,18 @@ Una vez que la longitud sea la adecuada, existe un bucle **for** que recorre la 
 
 En el condicional se comprueba que la diferencia entre el caracter en la posición "**i**" y el siguiente (**[i + 1]**) sea -1.  Ej ('a' - 'b' = -1, 'e'-'f' = -1).
 
+### Extra
+
+Se pueden ver identificar todas las partes vistas anteriormente en **radare2**.
+
+![img](../imgs/write-ups/crackmes/simple-keygen/simple_keygen_extra.png)
+
+1. En azul se puede ver la comprobación de la longitud de la clave con 0x10 (16).
+2. En el recuadro en rojo, se obtiene el primer caracter que se utilizará en la resta.
+3. En el verde, se obtiene el caracter contiguo. [i + 1]
+4. En este paso se realiza la resta y se comprueba que el resultado es **-1**.
+5. Por último se suman **2** a la variable **i** y se ejecuta otra vez el bucle hasta haber recorrido toda la clave.
+
 ## KeyGenerator.py
 
 ```py
