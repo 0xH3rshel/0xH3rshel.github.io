@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Split64 - RopEmporium
-tags: [ctf, ropemporium]
+tags: [ctf, rev, ropemporium]
 ---
 
 **Autor**: RopEmporium \\

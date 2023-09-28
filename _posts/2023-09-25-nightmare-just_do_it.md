@@ -140,6 +140,8 @@ target.sendline(payload)
 target.interactive()
 ```
 
+Ahora ejecuto el script.
+
 ```
 h3rshel@kali:~/Desktop/reversing$ python3 exploit.py
 Welcome my secret service. Do you know the password?

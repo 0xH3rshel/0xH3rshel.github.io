@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ret2Win32 - RopEmporium
-tags: [ctf, ropemporium]
+tags: [ctf, rev, ropemporium]
 ---
 
 **Autor**: RopEmporium \\
