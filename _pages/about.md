@@ -16,7 +16,7 @@ permalink: /about/
 "Perfiles": [
     {"hackthebox": "https://app.hackthebox.com/profile/677152"},
     {"tryhackme": "https://tryhackme.com/p/0xH3rshel"},
-    {"hackmyvm": "https://hackmyvm.eu/public/?u=pablo"},
+    {"hackmyvm": "https://hackmyvm.eu/public/?u=0xH3rshel"},
     {"codewars": "https://www.codewars.com/users/0xH3rshel"},
     ]
 }
