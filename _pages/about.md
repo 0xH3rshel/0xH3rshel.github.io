@@ -7,7 +7,7 @@ permalink: /about/
 ```json
 {
 "Nombre": "Pablo",
-"Apodo": "0xH3rshel",
+"Nickname": "0xH3rshel",
 "Descripción": "Desarrollador, entusiasta de la ciberseguridad y fan de un buen desafío.",
 "Estudios": [
     {"Terminado": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma"},
