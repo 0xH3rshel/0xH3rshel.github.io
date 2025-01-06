@@ -4,7 +4,7 @@ url:
 description: > # description of the site (multiple lines allowed)
   Pequeño blog de cosas que me interesan. 
 
-permalink: /:title
+permalink: /:title/
 
 favicon: "logo.png" # relative path to site's favicon
 
