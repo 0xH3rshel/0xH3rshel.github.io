@@ -1,0 +1,39 @@
+navbar_entries:
+  - title: about
+    url: /about
+
+  - title: blog
+    url: /blog
+
+# project_entries:
+#   - title: 
+#     url: 
+#     desc: 
+#     highlight: WIP
+
+# old_project_entries:
+#   - title: 
+#     url: 
+#     desc: 
+#     highlight: 
+
+footer_entries:
+  - title: github
+    url: https://github.com/0xh3rshel
+
+  - title: feed
+    url: feed.xml
+
+misc_entries:
+  - title: this is an example vertical list
+    url: false
+
+  - title: you can show or hide using a boolean flag in _config.yml
+    url: false
+
+  - title: and you can add data in _data/home.yml
+    url: false
+
+  - title: Blog posts
+    post_list: true
+    url: false

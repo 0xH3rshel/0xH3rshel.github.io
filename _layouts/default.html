@@ -1,59 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-    {% seo title=false %}
-    {% include meta.html %}
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-
-    <meta name="theme-color" content="#000000">
-    <meta name="google-site-verification" content="JVN2TnzbX8gLLcDFUs-sjl8VWlZhIbVghySQRpx6RP4" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/imgs/icon.png">
-    {% include analytics_head.html %}
-  </head>
-
+<html lang="{{ page.lang | default: "en" }}" class="html" data-theme="{{ site.theme_config.appearance | default: "auto" }}">
+        {%- include head.html -%}
   <body>
-    <div id="bar"></div>
-    <div class="wrapper-container">
-      <div class="wrapper-masthead">
-        <div class="container">
-          <header class="masthead clearfix">
-            <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.baseurl }}{{ site.avatar }}" alt="{{ site.title }}" /></a>
-
-            <div class="site-info">
-              <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-              <p class="site-description">{{ site.description }}</p> 
-            </div>
-
-            <nav>
-              <a href="{{ site.baseurl }}/">Home</a>
-              <a href="{{ site.baseurl }}/search">Search</a>
-              <a href="{{ site.baseurl }}/archive">Archive</a>
-              <a href="{{ site.baseurl }}/tags">Tags</a>
-              <a href="{{ site.baseurl }}/about">About</a>
-            </nav>
-          </header>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        {{ content }}
+        {% if site.theme_config.appearance_toggle %}
+          {% include toggle_theme_button.html %}
+        {% endif %}
+        <div class="credits">
+          {%- if site.theme_config.show_copyright == true -%}
+          &copy;&nbsp;{{ "now" | date: "%Y" }}&nbsp;{{site.author}}
+          &nbsp;
+          •
+          &nbsp;
+          {%- endif -%}
+          {%- if site.soopr -%}
+          Powered by <a href="https://www.soopr.co" target="_blank" rel="noreferrer">Soopr</a>
+          &nbsp;
+          •
+          &nbsp;
+          {%- endif -%}
+          Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
         </div>
       </div>
+    </main>
 
-      <div class="wrapper-main">
-        <div id="main" role="main" class="container">
-          {{ content }}
-        </div>
-      </div>
-
-      <div class="wrapper-footer">
-        <div class="container">
-          <footer class="footer">
-            {% include svg-icons.html %}
-          </footer>
-        </div>
-      </div>
-    </div>
-
-    {% include analytics.html %}
+    {%- if site.soopr -%}
+      {%- if site.soopr.publish_token and jekyll.environment == "production" -%}
+        <script async defer data-soopr-token="{{site.soopr.publish_token}}" src="https://sdk.soopr.co/soopr.js"></script>
+      {%- else -%}
+        <script async defer src="https://sdk.soopr.co/soopr.js"></script>
+      {%- endif -%}
+    {%- endif -%}
   </body>
 </html>

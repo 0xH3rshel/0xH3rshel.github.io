@@ -1,102 +1,56 @@
-#
-# This file contains configuration flags to customize your site
-#
-
-# Name of your site (displayed in the header)
-name: 0xH3rshel
-
-# Name of the author
+title: 0xH3rshel's Blog
 author: 0xH3rshel
-
-# Short bio or description (displayed in the header)
-description: 0xH3rshel's blog
-
-# URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: "/imgs/magic_g.jpg"
-
-#
-# Flags below are optional
-#
-
-# Includes an icon in the footer for each username you enter
-footer-links:
-  dribbble:
-  email: 
-  facebook:
-  flickr:
-  github: 0xH3rshel
-  instagram:
-  linkedin: 
-  pinterest:
-  rss: rss
-  twitter: 
-  stackoverflow: 
-  youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
-  playconsole:
-  mastodon: # <your-mastodon-instance>/@<your-user-name> eg. fosstodon.org/@username
-
-# Enter your Disqus shortname (not your username) to enable commenting on posts
-# You can find your shortname on the Settings page of your Disqus account
-disqus: 
-
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-#google_analytics: UA-43339302-11
-
-# For newer "GA4" analytics, use the following instead of the "UA" entry above
-#google_analytics_ga4: G-GABC1DEFG
-
-# Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
-# Used for Sitemap.xml and your RSS feed
 url: 
-enforce_ssl: 
+description: > # description of the site (multiple lines allowed)
+  Pequeño blog de cosas que me interesan. 
 
-# If you're hosting your site at a Project repository on GitHub pages
-# (http://yourusername.github.io/repository-name)
-# and NOT your User repository (http://yourusername.github.io)
-# then add in the baseurl here, like this: "/repository-name"
-baseurl: ""
+permalink: /:title
 
-#
-# !! You don't need to change any of the configuration flags below !!
-#
+favicon: "logo.png" # relative path to site's favicon
 
-permalink: /:title/
+# twitter:
+#     username: 
+#     card: 
 
-# The release of Jekyll Now that you're using
-version: v1.2.0
+#theme: moonwalk # if you are using GitHub Pages, change it to remote_theme: abhinavs/moonwalk
+# remote_theme: abhinavs/moonwalk
 
-# Jekyll 3 now only supports Kramdown for Markdown
-kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
-  input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
-    css_class: 'highlight'
+theme_config:
+  appearance: "dark" # can be "light", "dark" or "auto"
+  appearance_toggle: true # if appearance can be switched by user
+  back_home_text: "home.." # customize text for homepage link in post layout
+  date_format: "%Y-%m-%d" # customize how date is formatted
+  show_description: true # show blog description
+  show_navbar: true # show horizontal navbar
+  show_footer: true # show footer links in home page,add in _data/home.yml
+  show_copyright: false # show copyright notice in footer
+  # following keys are using to create home layout
+  show_projects: false # show projects as cards, add in _data/home.yml
+  show_blog: true # show blog posts added in _posts
+  show_old_projects: false # show old projects as cards, add in _data/home.yml
+  show_misc_list: false # show generic vertical list for misc details, add _data/home.yml
+  show_reading_time: true # show number of words and reading time in the blog posts
+  show_tags: true # show tags in a blog posts
+  # options for "home" page
+  home:
+    title_projects: Portfolio
+    title_misc_list: Details
+    title_blog: Blog
+    title_old_projects: Old Projects
 
-# Set the Sass partials directory, as we're using @imports
+#soopr:
+#  publish_token: "" # sign up at https://www.soopr.co to get your publish token and personalize share and reaction options
+
+highlighter: rouge
+
 sass:
-  style: :expanded # You might prefer to minify using :compressed
+  style: :compressed
 
-# Use the following plug-ins
+paginate: 7 # Número de entradas por página
+paginate_path: "/page:num/" # Ruta de las páginas paginadas
+
 plugins:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
-  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
-
-include: ['_pages']
-
-paginate: 6
-paginate_path: /page:num/
-
-# Exclude these files from your production _site
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - CNAME
-
+  - jekyll-sitemap

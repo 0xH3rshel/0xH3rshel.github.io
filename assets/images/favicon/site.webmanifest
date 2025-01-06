@@ -1,0 +1,14 @@
+{
+    "name": "0xH3rshel",
+    "short_name": "0xH3rshel",
+    "icons": [
+        {
+            "src": "/assets/images/favicon/logo.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

@@ -1,0 +1,101 @@
+---
+layout: default
+---
+
+<header>
+{% if site.theme_config.show_navbar == true %}
+  {% include horizontal_list.html collection=site.data.home.navbar_entries %}
+  <div class="dashed"></div>
+{% endif %}
+
+  <h1>{{ site.title }}</h1>
+  {% if site.theme_config.show_description == true %}
+    <p>{{ site.description }}</p>
+  {% endif %}
+</header>
+
+{{ content }}
+
+{% if site.theme_config.show_projects == true %}
+  <h2>{{ site.theme_config.home.title_projects }}</h2>
+  {% include card_list.html collection=site.data.home.project_entries %}
+{% endif %}
+
+{% if site.theme_config.show_misc_list == true %}
+  <h2>{{ site.theme_config.home.title_misc_list }}</h2>
+  {% include vertical_list.html collection=site.data.home.misc_entries %}
+{% endif %}
+
+<!--
+{% if site.theme_config.show_blog == true %}
+  <h2>{{ site.theme_config.home.title_blog }}</h2>
+  {% include post_list.html %}
+{% endif %}
+-->
+{% if site.theme_config.show_blog == true %}
+  <h2>Últimos posts...</h2>
+  <ul>
+    {% for post in paginator.posts %}
+      <li class="post-list-item">
+        <span class="home-date">
+          {{ post.date | date: site.theme_config.date_format }} »
+        </span>
+        <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if site.theme_config.show_old_projects == true %}
+  <h2>{{ site.theme_config.home.title_old_projects }}</h2>
+  {% include card_list.html collection=site.data.home.old_project_entries %}
+{% endif %}
+
+<div class="pagination">
+  <!-- Botón para ir al inicio -->
+  {% if paginator.page > 1 %}
+    <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-link first-link">&laquo;</a>
+  {% else %}
+    <span class="disabled-link">&laquo;</span>
+  {% endif %}
+
+  {% assign start_page = paginator.page | minus: 2 %}
+  {% assign end_page = paginator.page | plus: 2 %}
+
+  {% if start_page < 1 %}
+    {% assign start_page = 1 %}
+    {% assign end_page = 5 %}
+  {% endif %}
+
+  {% if end_page > paginator.total_pages %}
+    {% assign end_page = paginator.total_pages %}
+    {% assign start_page = end_page | minus: 4 %}
+    {% if start_page < 1 %}
+      {% assign start_page = 1 %}
+    {% endif %}
+  {% endif %}
+
+  {% for page in (start_page..end_page) %}
+    {% if page == paginator.page %}
+      <span class="current-page">{{ page }}</span>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-link">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page-link">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  <!-- Botón para ir al final -->
+  {% if paginator.page < paginator.total_pages %}
+    <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', paginator.total_pages }}" class="page-link last-link">&raquo;</a>
+  {% else %}
+    <span class="disabled-link">&raquo;</span>
+  {% endif %}
+</div>
+
+{% if site.theme_config.show_footer == true %}
+  <footer>
+    <div class="dashed"></div>
+    {% include horizontal_list.html collection=site.data.home.footer_entries %}
+  </footer>
+{% endif %}
